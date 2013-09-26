@@ -1,3 +1,4 @@
+# coding=utf-8
 from datetime import datetime
 import os
 from django.db import models
@@ -30,7 +31,9 @@ class Attachment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     creator = models.ForeignKey(UserModel, related_name="created_attachments", verbose_name=_('creator'))
-    attachment_file = models.FileField(_('attachment'), upload_to=attachment_upload)
+    name = models.CharField(verbose_name=_(u'название файла'), null=True, blank=True, max_length=1024)
+    showing = models.BooleanField(verbose_name=_(u'показывать/не показывать клиенту'), default=True)
+    attachment_file = models.FileField(_(u'файл'), upload_to=attachment_upload)
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
 
