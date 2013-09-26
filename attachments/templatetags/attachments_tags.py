@@ -36,14 +36,14 @@ def attachment_delete_link(context, attachment):
     ``attachments.delete_foreign_attachments`` which allows him to delete all
     attachments.
     """
-    if context['user'].has_perm('delete_foreign_attachments') \
-       or (context['user'] == attachment.creator and \
-           context['user'].has_perm('attachments.delete_attachment')):
-        return {
-            'next': context['request'].build_absolute_uri(),
-            'delete_url': reverse('delete_attachment', kwargs={'attachment_pk': attachment.pk})
-        }
-    return {'delete_url': None,}
+    # if context['user'].has_perm('delete_foreign_attachments') \
+       # or (context['user'] == attachment.creator and \
+       #     context['user'].has_perm('attachments.delete_attachment')):
+    return {
+        'next': context['request'].build_absolute_uri(),
+        'delete_url': reverse('delete_attachment', kwargs={'attachment_pk': attachment.pk})
+    }
+    # return {'delete_url': None,}
 
 
 

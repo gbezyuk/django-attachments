@@ -30,7 +30,7 @@ class Attachment(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-    creator = models.ForeignKey(UserModel, related_name="created_attachments", verbose_name=_('creator'))
+    # creator = models.ForeignKey(UserModel, related_name="created_attachments", verbose_name=_('creator'))
     name = models.CharField(verbose_name=_(u'имя'), null=True, blank=True, max_length=1024)
     showing = models.BooleanField(verbose_name=_(u'показывать/не показывать клиенту'), default=True)
     attachment_file = models.FileField(_(u'файл'), upload_to=attachment_upload)
@@ -43,8 +43,8 @@ class Attachment(models.Model):
             ('delete_foreign_attachments', 'Can delete foreign attachments'),
         )
 
-    def __unicode__(self):
-        return '%s attached %s' % (self.creator.get_username(), self.attachment_file.name)
+    # def __unicode__(self):
+        # return '%s attached %s' % (self.creator.get_username(), self.attachment_file.name)
 
     @property
     def filename(self):
