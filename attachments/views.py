@@ -46,9 +46,9 @@ def add_attachment(request, app_label, module_name, pk,
 @login_required
 def delete_attachment(request, attachment_pk):
     g = get_object_or_404(Attachment, pk=attachment_pk)
-    if request.user.has_perm('delete_foreign_attachments') \
-       or request.user == g.creator:
-        g.delete()
-        messages.success(request, ugettext('Your attachment was deleted.'))
+    # if request.user.has_perm('delete_foreign_attachments') \
+    #    or request.user == g.creator:
+    g.delete()
+    messages.success(request, ugettext('Your attachment was deleted.'))
     next = request.REQUEST.get('next') or '/'
     return HttpResponseRedirect(next)
