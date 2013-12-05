@@ -7,9 +7,9 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth import get_user_model
 
 # From https://github.com/etianen/django-reversion/pull/206/files
+# Used instead of get_user_model() to avoid circular imports.
 UserModel = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 
@@ -37,7 +37,7 @@ class Attachment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     creator = models.ForeignKey(
-        get_user_model(), related_name="created_attachments",
+        UserModel, related_name="created_attachments",
         verbose_name=_('creator'))
     name = models.CharField(verbose_name=u'описание',
                             null=True, blank=True, max_length=1024)
