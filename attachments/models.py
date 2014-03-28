@@ -41,14 +41,14 @@ class Attachment(models.Model):
         verbose_name=_('creator'))
     name = models.CharField(verbose_name=u'описание',
                             null=True, blank=True, max_length=1024)
-    attachment_file = models.FileField(u'файл', upload_to=attachment_upload,
+    attachment_file = models.FileField(u'Attachment', upload_to=attachment_upload,
                                        max_length=1024)
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
 
     class Meta:
-        verbose_name = u'файл'
-        verbose_name_plural = u'файлы'
+        verbose_name = u'Attachment'
+        verbose_name_plural = u'Attachments'
         ordering = ['-created']
         permissions = (
             ('delete_foreign_attachments', 'Can delete foreign attachments'),

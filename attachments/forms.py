@@ -5,7 +5,7 @@ from attachments.models import Attachment
 
 
 class AttachmentForm(forms.ModelForm):
-    attachment_file = forms.FileField(label='Файл')
+    attachment_file = forms.FileField(label='Attachment')
 
     class Meta:
         model = Attachment

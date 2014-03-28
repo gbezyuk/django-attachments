@@ -7,7 +7,7 @@ setup(
     long_description=open('README.rst').read(),
     author='Martin Mahner',
     author_email='martin@mahner.org',
-    url='http://github.com/bartTC/django-attachments/tree/master',
+    url='http://github.com/l1f7/django-attachments/tree/master',
     packages=find_packages(),
     classifiers=[
         'Development Status :: 3 - Alpha',
