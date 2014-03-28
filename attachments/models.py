@@ -39,7 +39,7 @@ class Attachment(models.Model):
     creator = models.ForeignKey(
         UserModel, related_name="created_attachments",
         verbose_name=_('creator'))
-    name = models.CharField(verbose_name=u'описание',
+    name = models.CharField(verbose_name=u'Name',
                             null=True, blank=True, max_length=1024)
     attachment_file = models.FileField(u'Attachment', upload_to=attachment_upload,
                                        max_length=1024)
